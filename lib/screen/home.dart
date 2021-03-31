@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "We help our clients with",
+                                        "ABC lets create",
                                         style: lightLogoFont().copyWith(
                                           color: Colors.grey[400],
                                           fontSize: 30,
@@ -110,7 +110,6 @@ class _HomeState extends State<Home> {
                                           "Website",
                                           "Web Apps",
                                           "Mobile Apps",
-                                          "Training",
                                         ],
                                         textStyle: standardFont().copyWith(
                                             fontSize: 80,
@@ -218,7 +217,7 @@ class _HomeState extends State<Home> {
                                                     children: [
                                                       Row(
                                                         children: [
-                                                          Text("Bikin",
+                                                          Text("ABC",
                                                               style: boldLogoFont()
                                                                   .copyWith(
                                                                       color: Colors
@@ -231,8 +230,8 @@ class _HomeState extends State<Home> {
                                                         ],
                                                       ),
                                                       SizedBox(height: 50,),
-                                                      Text("Mr Amirulhafiz", style: standardFont(color: Colors.white).copyWith(fontSize: 25),),
-                                                        Text("Programmer, Thinker, Innovator", style: standardFont(color: Colors.white).copyWith(fontSize: 14, fontWeight: FontWeight.w100),)
+                                                      Text("Ahmad Muhammad", style: standardFont(color: Colors.white).copyWith(fontSize: 25),),
+                                                        Text("Programmer", style: standardFont(color: Colors.white).copyWith(fontSize: 14, fontWeight: FontWeight.w100),)
                                                     ],
                                                   ),
                                                 ),
@@ -328,7 +327,7 @@ class _HomeState extends State<Home> {
                             style: standardFont().copyWith(fontSize: 90),
                           ),
                           Text(
-                            "@eyemeroll",
+                            "@ABC",
                             style: standardFont().copyWith(
                                 fontSize: 20, backgroundColor: Colors.yellow),
                           )
