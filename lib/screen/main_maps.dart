@@ -80,122 +80,155 @@ class MyPainter extends CustomPainter {
   }
 
   void drawLabuan(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("W.P. Labuan");
+    int totPopulation = getTotPop("W.P. Labuan");
     int latestCases = getLatestCases("W.P. Labuan");
     Color color = getColor(latestCases);
     Path path_0 = getLabuan(size);
     void onDraw(_) {
-      print("On draw labuan");
+      _storePosition(_);
+      _showPopupMenu("W.P. Labuan", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawSarawak(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Sarawak");
+    int totPopulation = getTotPop("Sarawak");
     int latestCases = getLatestCases("Sarawak");
     Color color = getColor(latestCases);
     Path path_0 = getSarawak(size);
     void onDraw(_) {
-      print("On draw sarawak");
+      _storePosition(_);
+      _showPopupMenu("Sarawak", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawTerengganu(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Terengganu");
+    int totPopulation = getTotPop("Terengganu");
     int latestCases = getLatestCases("Terengganu");
     Color color = getColor(latestCases);
     Path path_0 = getTerengganu(size);
     void onDraw(_) {
-      print("On draw terengganu");
+      _storePosition(_);
+      _showPopupMenu("Terengganu", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawSelangor(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Selangor");
+    int totPopulation = getTotPop("Selangor");
     int latestCases = getLatestCases("Selangor");
     Color color = getColor(latestCases);
     Path path_0 = getSelangor(size);
     void onDraw(_) {
-      print("On draw selangor");
+      _storePosition(_);
+      _showPopupMenu("Selangor", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawPerlis(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Perlis");
+    int totPopulation = getTotPop("Perlis");
     int latestCases = getLatestCases("Perlis");
     Color color = getColor(latestCases);
     Path path_0 = getPerlis(size);
     void onDraw(_) {
-      print("On draw perlis");
+      _storePosition(_);
+      _showPopupMenu("Perlis", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawPerak(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Perak");
+    int totPopulation = getTotPop("Perak");
     int latestCases = getLatestCases("Perak");
     Color color = getColor(latestCases);
     Path path_0 = getPerak(size);
     void onDraw(_) {
-      print("On draw perak");
+      _storePosition(_);
+      _showPopupMenu("Perak", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawPenang(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Pulau Pinang");
+    int totPopulation = getTotPop("Pulau Pinang");
     int latestCases = getLatestCases("Pulau Pinang");
     Color color = getColor(latestCases);
     Path path_0 = getPenang(size);
 
     void onDraw(_) {
-      print("On draw penang");
+      _storePosition(_);
+      _showPopupMenu("Pulau Pinang", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawPahang(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Pahang");
+    int totPopulation = getTotPop("Pahang");
     int latestCases = getLatestCases("Pahang");
     Color color = getColor(latestCases);
     Path path_0 = getPahang(size);
     void onDraw(_) {
-      print("On draw Pahang");
+      _storePosition(_);
+      _showPopupMenu("Pahang", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawNS(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Negeri Sembilan");
+    int totPopulation = getTotPop("Negeri Sembilan");
     int latestCases = getLatestCases("Negeri Sembilan");
     Color color = getColor(latestCases);
     Path path_0 = getNS(size);
     void onDraw(_) {
-      print("On draw NS");
+      _storePosition(_);
+      _showPopupMenu("Negeri Sembilan", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawMelaka(TouchyCanvas canvas, Size size) {
+    int death = getDeathYtd("Melaka");
+    int totPopulation = getTotPop("Melaka");
     int latestCases = getLatestCases("Melaka");
     Color color = getColor(latestCases);
     Path path_0 = getMelaka(size);
     void onDraw(_) {
-      print("On draw Melaka");
+      _storePosition(_);
+      _showPopupMenu("Melaka", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
   }
 
   void drawSabah(TouchyCanvas canvas, Size size) {
+     int death = getDeathYtd("Sabah");
+    int totPopulation = getTotPop("Sabah");
     int latestCases = getLatestCases("Sabah");
     Color color = getColor(latestCases);
     Path path_0 = getSabah(size);
     void onDraw(_) {
-      print("On draw Sabah");
+         _storePosition(_);
+      _showPopupMenu("Sabah", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
@@ -231,11 +264,14 @@ class MyPainter extends CustomPainter {
   }
 
   void drawKelantan(TouchyCanvas canvas, Size size) {
+     int death = getDeathYtd("Kelantan");
+    int totPopulation = getTotPop("Kelantan");
     int latestCases = getLatestCases("Kelantan");
     Color color = getColor(latestCases);
     Path path_0 = getKelantan(size);
     void onDraw(_) {
-      print("On draw Kelanta $latestCases");
+     _storePosition(_);
+      _showPopupMenu("Kelantan", latestCases, totPopulation, death);
     }
 
     drawPaths(canvas, path_0, onDraw, color: color);
