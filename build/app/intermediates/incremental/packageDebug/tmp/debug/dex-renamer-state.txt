@@ -1,0 +1,4 @@
+#Mon Aug 09 19:33:53 MYT 2021
+base.0=/Users/amirulhafiz/Desktop/Personal/webexp/flutter_webs/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
