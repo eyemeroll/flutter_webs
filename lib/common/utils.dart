@@ -18,3 +18,11 @@ double cw(double width){
 double cf(double font){
   return font.sp;
 }
+
+class ReportFormData {
+  static var data;
+  static var currentHome;
+  static var qIndex;
+  static var dynamicFields;
+  static var id;
+}
