@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.all(4.0),
                         child: Center(
                           child: Text(
-                            "monomics",
+                            "",
                             style:
                                 cmFont(33, color: Colors.white, adapt: false),
                           ),
