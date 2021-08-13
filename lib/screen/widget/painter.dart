@@ -268,8 +268,24 @@ class MyPainter extends CustomPainter {
     var y = getDeathTwoDaysBefore(state);
     var deathDifference = death - y;
 
+    DateTime today = DateTime.now();
     DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
-    String formattedDate = DateFormat('dd MMM').format(yesterday);
+    String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
+    String _formattedDate = DateFormat('dd MMM').format(yesterday);
+    String _todayFormatted = DateFormat('dd MMM').format(today);
+    String latestDate = "";
+  
+    var data = ReportFormData.data['cases'];
+
+    try {
+      var lastestData = data[todayFormatted];
+      if (lastestData != null) latestDate = _todayFormatted;
+      else latestDate = _formattedDate;
+    } catch (e) {
+      
+    }
+
+    print(latestDate);
 
     await showMenu(
       context: context,
@@ -290,7 +306,7 @@ class MyPainter extends CustomPainter {
                   SizedBox(
                     width: 8,
                   ),
-                  Text("${formattedDate.toUpperCase()}",
+                  Text("${latestDate.toUpperCase()}",
                       style: cbFont(11, adapt: false)),
                 ],
               ),
@@ -321,6 +337,7 @@ class MyPainter extends CustomPainter {
                           style: cnFont(14, adapt: false)),
                     ],
                   ),
+                  SizedBox(width: 10,),
                   Row(
                     children: [
                       Text(death.toString(), style: cnFont(25, adapt: false)),
@@ -404,13 +421,38 @@ void drawPathsExp(
 
 int getCasesTwoDaysBefore(String state) {
   int cases = 0;
-  DateTime yesterday = DateTime.now().subtract(Duration(days: 2));
-  String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+  var _days = 2;
+
+  bool todayData = false; //To check if today data exist
+
+  DateTime today = DateTime.now();
+  String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
 
   var data = ReportFormData.data['cases'];
+
   if (data != null) {
-    var ytdData = data[formattedDate];
-    var xcases = ytdData[state];
+    var ytdData;
+    var xcases;
+
+    // Check if today data exist
+    try {
+      var _todayData = data[todayFormatted];
+      if (_todayData != null) {
+        todayData = true;
+      }
+    } catch (e) {
+      todayData = false;
+    }
+
+    if (todayData) {
+      _days = 1;
+    }
+
+    DateTime yesterday = DateTime.now().subtract(Duration(days: _days));
+    String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+    ytdData = data[formattedDate];
+    xcases = ytdData[state];
+
     try {
       cases = int.parse(xcases);
     } catch (e) {
@@ -423,13 +465,25 @@ int getCasesTwoDaysBefore(String state) {
 
 int getLatestCases(String state) {
   int cases = 0;
+
+  DateTime today = DateTime.now();
   DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
   String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+  String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
 
   var data = ReportFormData.data['cases'];
   if (data != null) {
-    var ytdData = data[formattedDate];
-    var xcases = ytdData[state];
+    var lastestData;
+    var xcases;
+
+    try {
+      lastestData = data[todayFormatted];
+      xcases = lastestData[state];
+    } catch (e) {
+      lastestData = data[formattedDate];
+      xcases = lastestData[state];
+    }
+
     try {
       cases = int.parse(xcases);
     } catch (e) {
@@ -442,13 +496,38 @@ int getLatestCases(String state) {
 
 int getDeathTwoDaysBefore(String state) {
   int cases = 0;
-  DateTime yesterday = DateTime.now().subtract(Duration(days: 2));
-  String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+  var _days = 2;
+
+  bool todayData = false; //To check if today data exist
+
+  DateTime today = DateTime.now();
+  String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
 
   var data = ReportFormData.data['death'];
+
   if (data != null) {
-    var ytdData = data[formattedDate];
-    var xcases = ytdData[state];
+    var ytdData;
+    var xcases;
+
+    // Check if today data exist
+    try {
+      var _todayData = data[todayFormatted];
+      if (_todayData != null) {
+        todayData = true;
+      }
+    } catch (e) {
+      todayData = false;
+    }
+
+    if (todayData) {
+      _days = 1;
+    }
+
+    DateTime yesterday = DateTime.now().subtract(Duration(days: _days));
+    String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+    ytdData = data[formattedDate];
+    xcases = ytdData[state];
+
     try {
       cases = int.parse(xcases);
     } catch (e) {
@@ -461,14 +540,27 @@ int getDeathTwoDaysBefore(String state) {
 
 int getDeathYtd(String state) {
   int death = 0;
+
+  DateTime today = DateTime.now();
   DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
   String formattedDate = DateFormat('yyyy-MM-dd').format(yesterday);
+  String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
+
   var data = ReportFormData.data['death'];
   if (data != null) {
-    var ytdData = data[formattedDate];
-    var xcases = ytdData[state];
+    var lastestData;
+    var xdeath;
+
     try {
-      death = int.parse(xcases);
+      lastestData = data[todayFormatted];
+      xdeath = lastestData[state];
+    } catch (e) {
+      lastestData = data[formattedDate];
+      xdeath = lastestData[state];
+    }
+
+    try {
+      death = int.parse(xdeath);
     } catch (e) {
       print("Error converting $e");
     }
