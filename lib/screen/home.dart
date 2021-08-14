@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:website/data/network_cases_state.dart';
 import 'package:website/screen/phone/mob_main_map.dart';
+import 'package:website/screen/web/general_table.dart';
 import 'package:website/screen/web/web_main_map.dart';
 import 'package:website/screen/widget/charts/main_data_chart.dart';
 import 'package:website/style/style.dart';
@@ -33,7 +34,7 @@ class _HomeState extends State<Home> {
       });
 
       latestDate = date.last;
-        _formattedDate = DateFormat('dd MMM').format(DateTime.parse(latestDate));
+      _formattedDate = DateFormat('dd MMM').format(DateTime.parse(latestDate));
       Map latestData = data[latestDate];
       var _value = 0;
       latestData.forEach((key, value) {
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> {
     Widget mobileMap() {
       return Center(
         child:
-            Container(width: Adaptive.w(90), height: 1000, child: MobMainMap()),
+            Container(width: Adaptive.w(90), child: MobMainMap()),
       );
     }
 
@@ -60,8 +61,6 @@ class _HomeState extends State<Home> {
       return Center(
           child: Container(width: Adaptive.w(50), child: WebMainMap()));
     }
-
-    
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -133,21 +132,22 @@ class _HomeState extends State<Home> {
                                       ? Get.width * 0.8
                                       : Get.width * 0.5,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
                                           Text(
                                             "New reported cases as of $_formattedDate:  ",
                                             style: gmFont(
-                                              Get.width > 500 ? 20 : 20,
+                                              Get.width > 600 ? 20 : 14,
                                               color: Colors.black,
                                             ).copyWith(letterSpacing: -1),
                                           ),
-                                           Text(
+                                          Text(
                                             "$totalNewCases ",
                                             style: gmFont(
-                                              Get.width > 500 ? 20 : 20,
+                                              Get.width > 500 ? 20 : 14,
                                               color: Colors.red,
                                             ).copyWith(letterSpacing: -1),
                                           ),
@@ -186,7 +186,17 @@ class _HomeState extends State<Home> {
                               : Get.width * 0.5,
                           child: Divider()),
                     ),
-                    device == DeviceScreenType.mobile ? mobileMap() : webMap()
+                    device == DeviceScreenType.mobile ? mobileMap() : webMap(),
+                    Center(
+                      child: Container(
+                          width: device == DeviceScreenType.mobile
+                              ? Get.width * 0.8
+                              : Get.width * 0.5,
+                          child: Divider()),
+                    ),
+                    device == DeviceScreenType.mobile
+                        ?  Center(child: Container(width: Adaptive.w(90), child: GeneralTable(device)))
+                        : Center(child: Container(width: Adaptive.w(50), child: GeneralTable(device)))
                   ],
                 ),
               ),

@@ -52,7 +52,7 @@ class _MainMapsState extends State<MobMainMap> with TickerProviderStateMixin {
                     labelColor: Colors.black,
                      unselectedLabelColor: Colors.grey[400],
                      indicatorColor: Colors.red,
-                    labelStyle: cmFont(18,color: Colors.black),
+                    labelStyle: cmFont(14,color: Colors.black),
                     tabs: [
                       Tab(
                         text: ("Peninsular"),
@@ -69,28 +69,32 @@ class _MainMapsState extends State<MobMainMap> with TickerProviderStateMixin {
                 duration: Duration(milliseconds: 500),
                 child: casesByDate.isNotEmpty
                     ? Container(
-                        height: Get.height,
+                          height: 300,
                         child: TabBarView(children: [
-                          Transform.scale(
-                            alignment: FractionalOffset.topCenter,
-                            scale: 0.7,
-                            child: Container(
-                              child: CanvasTouchDetector(
-                                builder: (context) {
-                                  return CustomPaint(
-                                    size: Size(
-                                        Get.width * 0.5,
-                                        (Get.width * 1.3769633507853403)
-                                            .toDouble()),
-                                    painter: MyPainter(context, "0"),
-                                  );
-                                },
+                          Container(
+                            // height: 500,
+                   
+                            child: Transform.scale(
+                              alignment: FractionalOffset.topCenter,
+                              scale: 1,
+                              child: Container(
+                                child: CanvasTouchDetector(
+                                  builder: (context) {
+                                    return CustomPaint(
+                                      size: Size(
+                                          Get.width * 0.5,
+                                          (Get.width * 1.3769633507853403)
+                                              .toDouble()),
+                                      painter: MyPainter(context, "0"),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ),
                          Transform.scale(
                               alignment: FractionalOffset.topCenter,
-                              scale: 0.6,
+                              scale: 1,
                               child: Padding(
                                 padding: const EdgeInsets.all(22.0),
                                 child: Container(
