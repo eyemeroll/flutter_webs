@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,11 +5,11 @@ import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stats/stats.dart';
 import 'package:website/data/network_cases_state.dart';
-import 'package:website/screen/widget/painter.dart';
+
 import 'package:website/style/style.dart';
 
 class GeneralTable extends StatefulWidget {
-  DeviceScreenType device;
+  final DeviceScreenType device;
   GeneralTable(this.device);
 
   @override
@@ -80,15 +79,17 @@ class _GeneralTableState extends State<GeneralTable> {
   Widget build(BuildContext context) {
 
   var eighteenFont = widget.device == DeviceScreenType.mobile ? 14 : 18;
-  var tenFont =  widget.device == DeviceScreenType.mobile ? 10 : 8;
+  //var tenFont =  widget.device == DeviceScreenType.mobile ? 10 : 8;
     
     Widget tableData() {
       List<Widget> widList = [];
 
       if (lastKey.isNotEmpty) {
         Map latestData = data[lastKey];
-
+        var y = 0;
+      
         latestData.forEach((key, value) {
+          y++;
           var x = twoWeeksCases[key];
           List<int> newData = [];
           if (x != null) {
@@ -121,11 +122,15 @@ class _GeneralTableState extends State<GeneralTable> {
           }
 
           var vaxxData = vaccinationData[lastKey];
+
           int fullyVaxx = 0;
+          
           if (vaxxData != null) {
             var y = vaxxData[key];
             fullyVaxx = int.parse(y["doseTwoCumulative"]);
           }
+
+         
 
           var totPop = 0;
           var getPop = popData[key];
@@ -134,6 +139,7 @@ class _GeneralTableState extends State<GeneralTable> {
             totPop = int.parse(getPop["pop"]);
           }
 
+        
           percentFullyVax = fullyVaxx / totPop * 100;
 
           widList.add(
@@ -146,6 +152,7 @@ class _GeneralTableState extends State<GeneralTable> {
                       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
                   child: Column(
                     children: [
+                      y == 1 ? Container(height: 8) : Container(),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 4.0, top: 4),
                         child: Row(
@@ -209,7 +216,7 @@ class _GeneralTableState extends State<GeneralTable> {
                           ],
                         ),
                       ),
-                      Divider(
+                      y == latestData.length ? Container(height: 10) : Divider(
                         color: Colors.grey[300],
                       ),
                     ],
@@ -317,9 +324,7 @@ class _GeneralTableState extends State<GeneralTable> {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: tableData(),
         ),
-        Container(
-          height: 1000,
-        )
+       
       ],
     );
   }

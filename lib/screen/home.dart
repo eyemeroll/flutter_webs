@@ -195,8 +195,11 @@ class _HomeState extends State<Home> {
                           child: Divider()),
                     ),
                     device == DeviceScreenType.mobile
-                        ?  Center(child: Container(width: Adaptive.w(90), child: GeneralTable(device)))
-                        : Center(child: Container(width: Adaptive.w(50), child: GeneralTable(device)))
+                        ?  Center(child: Container( width: Adaptive.w(90), child: GeneralTable(device)))
+                        : Center(child: Container( width: Adaptive.w(50), child: GeneralTable(device))),
+                      SizedBox(height: 40),
+                      Center(child: Text("Dev by Amirul 2021", style: cbFont(10))),
+                      SizedBox(height: 40),
                   ],
                 ),
               ),

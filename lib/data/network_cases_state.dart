@@ -172,14 +172,14 @@ Future<Map> getVaccineByStateDate() async {
       var data = element[0].toString();
       var x = data.split(",");
 
-      var _date = x[0];
-      var _state = x[1];
-      var _doseOneDaily = x[2];
-      var _doseTwoDaily = x[3];
-      var _totalDoseDaily = x[4];
-      var _doseOneCumulative = x[5];
-      var _doseTwoCumulative = x[6];
-      var _totalDoseCumulative = x[7];
+      var _date = x[0];  //Date
+      var _state = x[1]; //State
+      var _doseOneDaily = x[2]; //Daily Partial
+      var _doseTwoDaily = x[3]; //Daily Full
+      var _totalDoseDaily = x[4]; //Daily
+      var _doseOneCumulative = x[5]; //Cumul Partial
+      var _doseTwoCumulative = x[6]; // CUmul Full
+      var _totalDoseCumulative = x[7]; //Cumul
 
       if (casesByDate.containsKey(_date)) {
         var cases = casesByDate[_date] ?? {};
